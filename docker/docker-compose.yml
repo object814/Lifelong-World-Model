@@ -32,5 +32,7 @@ services:
       - ../src:${WORKSPACE_DIR}/src
       - ../metaworld_walker_xml:${WORKSPACE_DIR}/metaworld_walker_xml
       - ../save_imgs:${WORKSPACE_DIR}/save_imgs
+      - ../README.md:${WORKSPACE_DIR}/README.md
+      - ../requirements.txt:${WORKSPACE_DIR}/requirements.txt
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - /tmp/.docker.xauth:/tmp/.docker.xauth:rw
