@@ -40,3 +40,33 @@ You should also mannually modifiy the gpu id in the MetaWorld class in the wrapp
 
 ## Appreciation
 The codes refer to the implemention of [dreamer-torch](https://github.com/jsikyoon/dreamer-torch). Thanks for the authors！
+
+
+# Haoyu Notes
+## Environment Setup
+1. Create a new conda environment:
+    ```bash
+    conda create -n llwm python=3.7
+    conda activate llwm
+    ```
+2. Install pytorch:
+    ```bash
+    conda install pytorch==1.8.1 torchvision==0.9.1 torchaudio==0.8.1 -c pytorch
+    ```
+    You can verify the installation by running:
+    ```bash
+    python -c "import torch; print(torch.cuda.is_available())"
+    ```
+3. In order to install previous versions of gym, downgrade:
+    ```bash
+    pip install "setuptools==65.5.0" "wheel==0.38.0"
+    python -m pip install "pip<24.1"
+    ```
+4. Install dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+5. Install prerequisites:
+    ```bash
+    pip install dm_control metaworld mujoco
+    ```
