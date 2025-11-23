@@ -9,3 +9,6 @@ gym[atari]==0.18.0
 moviepy==1.0.3
 einops==0.3.0
 protobuf==3.20.*
+dm_control
+metaworld
+mujoco
