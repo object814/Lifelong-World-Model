@@ -1,14 +1,13 @@
-# torch==1.8.1
-numpy==1.20.1
-# torchvision==0.9.1
-tensorboard==2.5.0
-pandas==1.2.4
-matplotlib==3.4.1
+# python=3.10
+numpy==1.21.1
+tensorboard==2.20.0
+pandas==2.0.3
+matplotlib==3.8.4
 ruamel.yaml==0.17.4
-gym[atari]==0.18.0
+gym[atari]==0.26.2
 moviepy==1.0.3
-einops==0.3.0
-protobuf==3.20.*
-dm_control
-metaworld
-mujoco
+einops==0.8.1
+protobuf==6.33.1
+dm_control==1.0.34
+metaworld==3.0.0
+mujoco==3.3.7
