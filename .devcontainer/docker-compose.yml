@@ -1,0 +1,61 @@
+# Use this docker-compose.yml to define multiple GPU containers for your development environment.
+# CHANGE things according to your needs as indicated in the comments.
+# Usage:
+#   Ctrl/Cmd + Shift + P -> "Dev Containers: Rebuild and Reopen in Container"
+# This will build all defined containers.
+# After that, you can connect to different containers in VS Code via the Remote Explorer tab in order to use different GPUs.
+services:
+  llwm_gpu0: # CHANGE to your service name
+    env_file:
+      - .env
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+      args:
+        USER_NAME: ${USER_NAME:?error}
+        USER_UID: ${USER_UID:?error}
+        WANDB_API_KEY: ${WANDB_API_KEY:?error}
+    image: haoyuzhou/llwm:0.0.1 # CHANGE to your image name (reused over multiple containers)
+    container_name: llwm_gpu0 # CHANGE to your container name 
+    environment:
+      - DISPLAY=${DISPLAY}
+      - NVIDIA_VISIBLE_DEVICES=0 # CHANGE to the GPU_ID you wish
+    volumes:
+      - ..:/Lifelong-World-Model # CHANGE to match your desired workspace name
+      - /tmp/.X11-unix:/tmp/.X11-unix # X11 forwarding for GUI apps.
+    shm_size: ${SHM_SIZE:-4gb}
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
+              device_ids: ["0"] # CHANGE to the GPU_ID you wish
+    tty: true
+    stdin_open: true
+    command: bash
+
+  llwm_gpu1:
+    env_file:
+      - .env
+    image: haoyuzhou/llwm:0.0.1
+    container_name: llwm_gpu1 # CHANGE to your container name
+    environment:
+      - DISPLAY=${DISPLAY}
+      - NVIDIA_VISIBLE_DEVICES=1 # CHANGE to the GPU_ID you wish
+    volumes:
+      - ..:/Lifelong-World-Model # CHANGE to match your desired workspace name
+      - /tmp/.X11-unix:/tmp/.X11-unix # X11 forwarding for GUI apps.
+    shm_size: ${SHM_SIZE:-16gb}
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
+              device_ids: ["1"] # CHANGE to the GPU_ID you wish
+    tty: true
+    stdin_open: true
+    command: bash
