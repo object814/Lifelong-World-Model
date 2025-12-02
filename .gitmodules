@@ -1,0 +1,3 @@
+[submodule "dreamer-torch"]
+	path = dreamer-torch
+	url = https://github.com/object814/dreamer-torch.git
