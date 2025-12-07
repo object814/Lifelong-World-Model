@@ -2,6 +2,10 @@
   "python.analysis.diagnosticSeverityOverrides": {
     "reportCallIssue": "none",
     "reportOptionalMemberAccess": "none",
-    "reportAttributeAccessIssue": "none"
+    "reportAttributeAccessIssue": "none",
+    "reportArgumentType": "none",
+    "reportOptionalCall": "none",
+    "reportPossiblyUnboundVariable": "none",
+    "reportOptionalSubscript": "none"
   }
 }
