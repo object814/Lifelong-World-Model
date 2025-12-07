@@ -256,8 +256,8 @@ dmc:
 
   # task: 'dmc_walker_walk' 2e6
   steps: 500000
-  eval_every: 1e4
-  log_every: 1e4
+  eval_every: 10000
+  log_every: 10000
   prefill: 2500
   dataset_size: 0
   pretrain: 100
@@ -292,10 +292,10 @@ dmc:
   # Training
   reward_scale: 2
   weight_decay: 0.0
-  model_lr: 3e-4
-  value_lr: 8e-5
-  actor_lr: 8e-5
-  opt_eps: 1e-5
+  model_lr: 0.0003
+  value_lr: 0.00008
+  actor_lr: 0.00008
+  opt_eps: 0.00001
   kl_free: '1.0'
   kl_scale: '1.0'
 

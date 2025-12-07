@@ -308,7 +308,7 @@ class ImagBehavior(nn.Module):
         value_input = imag_feat
 
     with tools.RequiresGrad(self.value):
-      with torch.amp.autocast(self._use_amp):
+      with torch.cuda.amp.autocast(self._use_amp):
         value = self.value(value_input[:-1].detach(), label)
         target = torch.stack(target, dim=1)
         value_loss = -value.log_prob(target.detach())
